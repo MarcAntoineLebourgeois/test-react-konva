@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import { Stage, Layer, Rect } from "react-konva";
 
 function App() {
@@ -45,17 +45,6 @@ function App() {
   };
   const annotationsToDraw = [...annotations, ...newAnnotation];
 
-  const stageCanvasRef = useRef(null);
-  const [size, setSize] = useState();
-  useEffect(() => {
-    if (stageCanvasRef?.current) {
-      setSize({
-        width: stageCanvasRef?.current?.offsetWidth,
-        height: stageCanvasRef?.current?.offsetHeight,
-      });
-    }
-  }, [stageCanvasRef]);
-
   return (
     <>
       <div style={{ width: "100vw", height: "6vh", backgroundColor: "blue" }} />
@@ -77,7 +66,6 @@ function App() {
           viewBox="0 0 1920 1080"
         >
           <foreignObject
-            ref={stageCanvasRef}
             width={1920}
             height={1080}
             style={{ backgroundColor: "yellow" }}
